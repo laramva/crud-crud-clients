@@ -1,28 +1,9 @@
-/* Classe responsável por lidar com a API e o CRUD */
+/* Definições de classes relacionadas a clientes */
 
-export class ClienteService {
-    constructor(apiBaseUrl) {
-        this.apiBaseUrl = apiBaseUrl;
-    }
-
-    /* Buscar todos os clientes */
-    async listar() {
-        const resposta = await fetch(this.apiBaseUrl);
-        return resposta.json();
-    }
-
-    /* Criar um novo cliente */
-    async criar(cliente) {
-        const resposta = await fetch(this.apiBaseUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(cliente)
-        });
-        return resposta.json();
-    }
-
-    /* Excluir cliente */
-    async excluir(id) {
-        await fetch(`${this.apiBaseUrl}/${id}`, { method: "DELETE" });
-    }
+export class Client {
+  constructor(id, name, email) {
+    this.id = id;
+    this.name = name.trim();
+    this.email = email.trim();
+  }
 }

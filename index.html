@@ -1,42 +1,138 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Clientes</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Clientes · CrudCrud</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">
+        <span class="brand-mark">02</span>
+        <span class="brand-name">ClientDesk</span>
+      </div>
 
-    <main class="container">
-        <h1 class="titulo">Cadastro de Clientes</h1>
-        <p class="subtitulo">Crie, liste e exclua clientes usando a API CrudCrud</p>
+      <nav class="topbar-nav">
+        <button class="nav-pill nav-pill-active">Clientes</button>
+        <button class="nav-pill">Relatórios</button>
+        <button class="nav-pill">Configurações</button>
+      </nav>
 
-        <section class="card">
-            <h2>Novo Cliente</h2>
+      <div class="topbar-actions">
+        <button class="ghost-pill">Entrar</button>
+      </div>
+    </div>
+  </header>
 
-            <div class="form-grid">
-                <div class="field">
-                    <label for="nome">Nome</label>
-                    <input id="nome" type="text" placeholder="Ex: Ana Souza">
-                </div>
+  <main class="page">
+    <section class="hero-shell">
+      <header class="hero-header">
+        <p class="hero-eyebrow">Painel de clientes</p>
+        <h1>Cadastro de Clientes</h1>
+        <p class="hero-subtitle">
+          Crie, liste e exclua clientes utilizando a API CrudCrud, em uma interface
+          pensada para gestão de dados de forma clara e organizada.
+        </p>
+      </header>
 
-                <div class="field">
-                    <label for="email">E-mail</label>
-                    <input id="email" type="email" placeholder="Ex: ana@email.com">
-                </div>
+      <section class="hero-content">
+        <!-- Coluna esquerda: formulário e resumo -->
+        <div class="column column-left">
+
+          <section class="card card-form">
+            <header class="card-header">
+              <span class="card-index">01</span>
+              <div>
+                <h2>Novo cliente</h2>
+                <p>Preencha os dados e salve para enviar à API.</p>
+              </div>
+            </header>
+
+            <form id="client-form" class="form-grid" novalidate>
+              <div class="field-group">
+                <label for="name">Nome</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Ex.: Ana Souza"
+                  autocomplete="off"
+                  required
+                >
+              </div>
+
+              <div class="field-group">
+                <label for="email">E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Ex.: ana@email.com"
+                  autocomplete="off"
+                  required
+                >
+              </div>
+
+              <div class="form-footer">
+                <p id="feedback" class="feedback" aria-live="polite"></p>
+                <button type="submit" class="btn-primary">
+                  Salvar cliente
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <section class="card card-summary">
+            <header class="card-header">
+              <span class="card-index">02</span>
+              <div>
+                <h2>Resumo dos clientes</h2>
+                <p>Visão rápida dos dados salvos na API.</p>
+              </div>
+            </header>
+
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span class="summary-label">Total de clientes</span>
+                <span id="stats-total" class="summary-value">--</span>
+              </div>
+
+              <div class="summary-item">
+                <span class="summary-label">Domínios de e-mail</span>
+                <ul id="stats-domains" class="domain-list">
+                  <!-- preenchido via JS -->
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Coluna direita: lista de clientes -->
+        <div class="column column-right">
+          <section class="card card-list">
+            <header class="card-header">
+              <span class="card-index">03</span>
+              <div>
+                <h2>Clientes cadastrados</h2>
+                <p>Dados carregados diretamente da API CrudCrud.</p>
+              </div>
+            </header>
+
+            <div id="list-empty" class="empty-state">
+              Nenhum cliente cadastrado ainda.
             </div>
 
-            <button id="btnSalvar" class="btn-primary">Salvar Cliente</button>
-            <p id="msgErro" class="erro"></p>
-        </section>
+            <ul id="clients-list" class="clients-list">
+              <!-- itens inseridos via JS -->
+            </ul>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
 
-        <section class="card">
-            <h2>Clientes Cadastrados</h2>
-            <ul id="listaClientes" class="lista"></ul>
-        </section>
-    </main>
-
-    <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
