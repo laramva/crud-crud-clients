@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Clientes – CRUDCrud</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="app-shell">
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true"></div>
+                <div class="brand-text">
+                    <span class="brand-title">Client Manager</span>
+                    <span class="brand-subtitle">Cadastro de clientes com CRUDCrud</span>
+                </div>
+            </div>
+
+            <div class="header-meta">
+                <span class="meta-label">Ambiente</span>
+                <span class="meta-pill">Dev / Estudos</span>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <!-- Coluna esquerda: formulário -->
+            <section class="card card-form">
+                <header class="card-header">
+                    <h1>Cadastro de clientes</h1>
+                    <p>
+                        Preencha os dados abaixo para adicionar um novo cliente.
+                        Os registros são salvos diretamente na API do CRUDCrud.
+                    </p>
+                </header>
+
+                <form id="cliente-form" class="form">
+                    <div class="form-field">
+                        <label for="nome">Nome completo</label>
+                        <div class="field-wrapper">
+                            <span class="field-icon" aria-hidden="true"></span>
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Ex.: Ana Souza"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">E-mail</label>
+                        <div class="field-wrapper">
+                            <span class="field-icon field-icon-mail" aria-hidden="true"></span>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Ex.: ana@email.com"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="observacoes">Observações (opcional)</label>
+                        <textarea
+                            id="observacoes"
+                            name="observacoes"
+                            rows="3"
+                            placeholder="Anote qualquer informação relevante sobre o cliente."
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn primary-btn">
+                        Salvar cliente
+                    </button>
+
+                    <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
+                </form>
+
+                <div class="helper-box">
+                    <h2>Como funciona este projeto</h2>
+                    <p>
+                        Este cadastro usa Fetch API para se comunicar com o CRUDCrud.
+                        Cada cliente inserido é enviado via requisição <strong>POST</strong>,
+                        listado com <strong>GET</strong> e removido com <strong>DELETE</strong>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Coluna direita: lista -->
+            <section class="card card-lista">
+                <header class="card-header">
+                    <h2>Clientes cadastrados</h2>
+                    <p>
+                        Abaixo você encontra os clientes retornados pela API.
+                        É possível remover qualquer registro diretamente pela interface.
+                    </p>
+                </header>
+
+                <div class="lista-status" id="lista-status" aria-live="polite">
+                    Carregando clientes...
+                </div>
+
+                <ul id="clientes-lista" class="clientes-lista"></ul>
+
+                <footer class="card-footer">
+                    <p>
+                        Dica: o endpoint do CRUDCrud expira em 24h. Se algo parar de
+                        funcionar, gere um novo endpoint e atualize o arquivo
+                        <code>scripts.js</code>.
+                    </p>
+                </footer>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
